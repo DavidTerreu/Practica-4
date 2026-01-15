@@ -1,0 +1,41 @@
+form{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input{
+    width: 20%;
+}
+button{
+    margin-bottom: 2%;
+}
+#formulario{
+    text-align: center;
+}
+#kanban{
+    display: flex;
+    justify-content: center;
+}
+th{
+    border: 1px solid black;
+    background-color: lightgreen;
+}
+td{
+    border: 1px solid black;
+    text-align: center;
+    background-color: lightyellow;
+}
+#tabla{
+    display: flex;
+}
+h3{
+    border: 1px solid black;
+    text-align: center;
+    background-color: lightgreen;
+}
+p{
+    border: 1px solid black;
+    text-align: center;
+    background-color: lightyellow;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pŕactica 4, Kanban</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <section id="formulario">
+        <form id="form" action="">
+            <label for="columnas">Numero columnas:</label>
+            <input id="colum" type="number" name="columnas">
+            <button id="botonC">Añadir columna</button>
+            <label id="labelN" for="nombre">Nombre columna:</label>
+            <input id="nom" type="text" name="nombre">
+            <button id="botonN">Añadir nombre</button>
+        </form>
+        <button type="button" id="limpiar">
+            Limpiar Local Storage
+        </button>
+    </section>
+
+    <!--<section id="kanban">
+        <table>
+            <thead>
+                <tr id="nomCol">
+                    <th>
+                        Backlog
+                    </th>
+                    <th>
+                        In progress
+                    </th>
+                    <th>
+                        Review
+                    </th>
+                    <th>
+                        Done
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        Hacer cosas
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Hacer muchas cosas 2
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>-->
+
+    <section id="tabla">
+        <div>
+            <h3>
+                Backlog
+            </h3>
+            <p>
+                Hacer cosas
+            </p>
+        </div>
+        <div>
+            <h3>
+                In progress
+            </h3>
+            <p>
+                Hacer cosas 2
+            </p>
+        </div>
+
+    </section>
+    
+    <script src="./main.js"></script>
+</body>
+</html>
