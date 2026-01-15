@@ -8,6 +8,8 @@ const formu = document.getElementById('form');
 let maxC = 0;
 let contC = 1;
 
+//Arreglar que al recargar, no salga numero 1 en columna ni cargue el nombre mal
+
 label.textContent = `Nombre columna ${contC}:`;
 
 if (localStorage.getItem('temporalColumna')) {
