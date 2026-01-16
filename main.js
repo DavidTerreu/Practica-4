@@ -8,7 +8,13 @@ const formu = document.getElementById('form');
 let maxC = 0;
 let contC = 1;
 
-//Arreglar que al recargar, no salga numero 1 en columna ni cargue el nombre mal
+//Arreglar que al recargar, no cargue el nombre si no hay nada escrito de antes
+
+if (localStorage.getItem('numColum')) {
+    contC = JSON.parse(localStorage.getItem('numColum'));
+} else {
+    localStorage.setItem('numColum', JSON.stringify(contC));
+}
 
 label.textContent = `Nombre columna ${contC}:`;
 
@@ -76,6 +82,8 @@ function añadirNombre(e) {
     contC++;
     alert(`Contador después: ${contC}`);
     nom.value = '';
+
+    localStorage.setItem('numColum', JSON.stringify(contC));
 
     label.textContent = `Nombre columna ${contC}:`;
 
