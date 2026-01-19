@@ -39,3 +39,6 @@ p{
     text-align: center;
     background-color: lightyellow;
 }
+#tablaPrueba{
+    display: flex;
+}
