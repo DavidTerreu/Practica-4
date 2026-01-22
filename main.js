@@ -12,6 +12,8 @@ const tabla = document.getElementById('tabla');
 const tarea = document.getElementById('tarea');
 const botonTarea = document.getElementById('botonTarea');
 const nuevaTarea = document.getElementById('nuevaTarea');
+const columnaDROP = document.getElementsByClassName('columnaDROP');
+
 let maxC = 0;
 let contC = 1;
 let contT = 1;
@@ -124,6 +126,9 @@ function cargarColumnasGuardadas() {
         for (let i = 1; i <= maxC; i++) {
             const divColumna = document.createElement('div');
             divColumna.id = `columna-${i}`;
+            divColumna.className = 'columnaDROP';
+            divColumna.addEventListener('dragover', permitirDrop);
+            divColumna.addEventListener('drop', drop);
             tabla.appendChild(divColumna);
             
             // Cargar el nombre de las columnas si existen
@@ -141,6 +146,9 @@ function cargarColumnasGuardadas() {
             if (tareaGuardada) {
                 const tareaP = document.createElement('p');
                 tareaP.textContent = JSON.parse(tareaGuardada);
+                tareaP.draggable = true;
+                tareaP.id = `tarea-${i}`;
+                tareaP.addEventListener('dragstart', inicioDrag);
                 const columnaTarea = document.getElementById(`columna-1`);
                 if (columnaTarea) {
                     columnaTarea.appendChild(tareaP);
@@ -185,6 +193,9 @@ function aniadirColumna(e) {
     for (let i = 1; i <= maxC; i++) {
         const divColumna = document.createElement('div');
         divColumna.id = `columna-${i}`;
+        divColumna.className = 'columnaDROP';
+        divColumna.addEventListener('dragover', permitirDrop);
+        divColumna.addEventListener('drop', drop);
         tabla.appendChild(divColumna);
     }
 
@@ -294,6 +305,9 @@ function aniadirTarea(e) {
     //Añadir el nombre de la tarea siempre al primer div
     const tareaP = document.createElement('p');
     tareaP.textContent = tarea.value;
+    tareaP.draggable = true;
+    tareaP.id = `tarea-${contT}`;
+    tareaP.addEventListener('dragstart', inicioDrag);
     const columnaTarea = document.getElementById(`columna-1`);
     if (columnaTarea) {
         columnaTarea.appendChild(tareaP);
@@ -314,3 +328,19 @@ function aniadirTarea(e) {
 }
 
 botonTarea.addEventListener('click', aniadirTarea);
+
+//Funciones drag & drop
+function inicioDrag(e) {
+    e.dataTransfer.setData('text/plain', e.target.id);
+}
+
+function permitirDrop(e) {
+    e.preventDefault();
+}
+
+function drop(e) {
+    e.preventDefault();
+    const idTarea = e.dataTransfer.getData('text/plain');
+    const tareaArrastrada = document.getElementById(idTarea);
+    e.currentTarget.appendChild(tareaArrastrada);
+}
