@@ -149,6 +149,7 @@ function cargarColumnasGuardadas() {
                 tareaP.draggable = true;
                 tareaP.id = `tarea-${i}`;
                 tareaP.addEventListener('dragstart', inicioDrag);
+                tareaP.addEventListener('dblclick', borrarTarea);
 
                 const columnaID = localStorage.getItem(`tarea-${i}`) || 'columna-1';
 
@@ -311,6 +312,7 @@ function aniadirTarea(e) {
     tareaP.draggable = true;
     tareaP.id = `tarea-${contT}`;
     tareaP.addEventListener('dragstart', inicioDrag);
+    tareaP.addEventListener('dblclick', borrarTarea);
     const columnaTarea = document.getElementById(`columna-1`);
     if (columnaTarea) {
         columnaTarea.appendChild(tareaP);
@@ -348,4 +350,16 @@ function drop(e) {
     const tareaArrastrada = document.getElementById(idTarea);
     e.currentTarget.appendChild(tareaArrastrada);
     localStorage.setItem(idTarea, e.currentTarget.id);
+}
+
+//Función para borrar tareas con doble click (usada al crear tarea y cargar datos)
+
+function borrarTarea(e) {
+    const tareaABorrar = e.target;
+    const idTarea = tareaABorrar.id;
+    const numeroTarea = idTarea.split('-')[1];
+
+    tareaABorrar.remove();
+    localStorage.removeItem(idTarea);
+    localStorage.removeItem(`Tarea ${numeroTarea}:`);
 }
